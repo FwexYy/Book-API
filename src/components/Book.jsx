@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./styles/Book.css";
+import "./styles/common.css";
 import BookDetails from "./BookDetails";
 
 const Book = ({ book }) => {

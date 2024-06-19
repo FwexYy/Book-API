@@ -1,4 +1,5 @@
 import "./styles/BookDetails.css";
+import "./styles/common.css";
 
 const BookDetails = ({ show, item, onClose }) => {
   if (!show) return null;

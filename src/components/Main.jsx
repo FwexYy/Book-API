@@ -2,6 +2,7 @@ import { useState } from "react";
 import Book from "./Book";
 import useBookSearch from "./hooks/useBookSearch";
 import "./styles/Main.css";
+import "./styles/common.css";
 
 const Main = () => {
   const [search, setSearch] = useState("");
@@ -18,7 +19,7 @@ const Main = () => {
   return (
     <>
       <div className="header">
-        <div className="row2">
+        <div className="row">
           <div className="search">
             <input
               type="text"
@@ -27,6 +28,9 @@ const Main = () => {
               onChange={(e) => setSearch(e.target.value)}
               onKeyPress={handleKeyPress}
             />
+            <button className="btn-search">
+              <i className="fas fa-search"></i>
+            </button>
           </div>
           <div className="filters">
             <label htmlFor="category">Category: </label>
