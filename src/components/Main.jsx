@@ -1,10 +1,19 @@
 import { useState } from "react";
+import Book from "./Book";
+import useBookSearch from "./hooks/useBookSearch";
 import "./styles/Main.css";
 
 const Main = () => {
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("all");
   const [sort, setSort] = useState("relevance");
+  const { bookData, searchBook } = useBookSearch(search, category, sort);
+
+  const handleKeyPress = (evt) => {
+    if (evt.key === "Enter") {
+      searchBook();
+    }
+  };
 
   return (
     <>
@@ -16,6 +25,7 @@ const Main = () => {
               placeholder="Enter"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
+              onKeyPress={handleKeyPress}
             />
           </div>
           <div className="filters">
@@ -44,6 +54,10 @@ const Main = () => {
             </select>
           </div>
         </div>
+      </div>
+
+      <div className="container">
+        <Book book={bookData} />
       </div>
     </>
   );
