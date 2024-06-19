@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./styles/Book.css";
+import BookDetails from "./BookDetails";
 
 const Book = ({ book }) => {
   const [show, setShow] = useState(false);
@@ -32,6 +33,13 @@ const Book = ({ book }) => {
 
         return null;
       })}
+      {bookItem && (
+        <BookDetails
+          show={show}
+          item={bookItem}
+          onClose={() => setShow(false)}
+        />
+      )}
     </>
   );
 };
