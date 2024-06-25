@@ -1,6 +1,6 @@
 import { useState } from "react";
-import Book from "./Book";
 import useBookSearch from "./hooks/useBookSearch";
+import Book from "./Book";
 import "./styles/Main.css";
 import "./styles/common.css";
 
@@ -28,7 +28,7 @@ const Main = () => {
               onChange={(e) => setSearch(e.target.value)}
               onKeyPress={handleKeyPress}
             />
-            <button className="btn-search">
+            <button className="btn-search" onClick={searchBook}>
               <i className="fas fa-search"></i>
             </button>
           </div>

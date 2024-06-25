@@ -1,12 +1,8 @@
-import { useState } from "react";
+import { Link } from "react-router-dom";
 import "./styles/Book.css";
 import "./styles/common.css";
-import BookDetails from "./BookDetails";
 
 const Book = ({ book }) => {
-  const [show, setShow] = useState(false);
-  const [bookItem, setItem] = useState(null);
-
   return (
     <>
       {book.map((item) => {
@@ -15,32 +11,20 @@ const Book = ({ book }) => {
 
         if (thumbnail && amount) {
           return (
-            <div
-              key={item.id}
-              className="book"
-              onClick={() => {
-                setShow(true);
-                setItem(item);
-              }}
-            >
-              <img src={thumbnail} alt="book" />
-              <div className="button">
-                <h3 className="title">{item.volumeInfo.title}</h3>
-                <p className="amount">{amount}</p>
+            <Link to={`/book/${item.id}`} key={item.id}>
+              <div className="book">
+                <img src={thumbnail} alt="book" />
+                <div className="button">
+                  <h3 className="title">{item.volumeInfo.title}</h3>
+                  <p className="amount">{amount}</p>
+                </div>
               </div>
-            </div>
+            </Link>
           );
         }
 
         return null;
       })}
-      {bookItem && (
-        <BookDetails
-          show={show}
-          item={bookItem}
-          onClose={() => setShow(false)}
-        />
-      )}
     </>
   );
 };

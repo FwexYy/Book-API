@@ -1,0 +1,51 @@
+.book-detail-container {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.book-detail-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.book-detail-main {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.book-detail-image {
+  flex: 1;
+  max-width: 300px;
+  margin-right: 20px;
+}
+
+.book-detail-image img {
+  width: 85%;
+  height: auto;
+}
+
+.book-detail-info {
+  flex: 2;
+  max-width: 600px;
+}
+
+.book-detail-info h2 {
+  font-size: 24px;
+  margin: 10px 0;
+}
+
+.book-detail-info h3 {
+  font-size: 20px;
+  margin: 10px 0;
+}
+
+.book-detail-info p,
+.book-detail-info div {
+  font-size: 16px;
+  margin: 10px 0;
+}
+
+.book-detail-info div {
+  white-space: pre-wrap;
+}
