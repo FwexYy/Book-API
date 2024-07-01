@@ -2,12 +2,14 @@
 
 .container {
   width: 50%;
+  height: 100%;
   margin: 0 auto;
   margin-top: 25px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 20px;
   box-sizing: border-box;
+  margin-bottom: 85px;
 }
 
 .book {
@@ -17,6 +19,9 @@
   transition: transform 0.3s, box-shadow 0.3s;
   text-align: center;
   font-family: "Poppins", sans-serif;
+  color: #000;
+  height: 360px;
+  max-width: 250px;
 }
 
 .book:hover {
@@ -26,6 +31,13 @@
 
 .book img {
   width: 80%;
-  height: auto;
+  height: 70%;
   margin-top: 10px;
+}
+
+.title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 200px;
 }

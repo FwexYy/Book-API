@@ -6,9 +6,13 @@
 }
 
 body {
-  background-color: bisque;
+  background-color: #f3f4f6;
 }
 
 html {
   font-size: 75.5%;
+}
+
+a {
+  text-decoration: none;
 }

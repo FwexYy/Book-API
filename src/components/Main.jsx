@@ -16,6 +16,10 @@ const Main = () => {
     }
   };
 
+  const handleSearchClick = () => {
+    searchBook();
+  };
+
   return (
     <>
       <div className="header">
@@ -28,12 +32,12 @@ const Main = () => {
               onChange={(e) => setSearch(e.target.value)}
               onKeyPress={handleKeyPress}
             />
-            <button className="btn-search" onClick={searchBook}>
+            <button className="btn-search" onClick={handleSearchClick}>
               <i className="fas fa-search"></i>
             </button>
           </div>
           <div className="filters">
-            <label htmlFor="category">Category: </label>
+            <label className="category">Category: </label>
             <select
               id="category"
               value={category}
@@ -47,7 +51,7 @@ const Main = () => {
               <option value="medical">Medical</option>
               <option value="poetry">Poetry</option>
             </select>
-            <label htmlFor="sort">Sort by: </label>
+            <label className="sort">Sort by: </label>
             <select
               id="sort"
               value={sort}

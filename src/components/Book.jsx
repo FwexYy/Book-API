@@ -8,6 +8,7 @@ const Book = ({ book }) => {
       {book.map((item) => {
         const thumbnail = item.volumeInfo.imageLinks?.smallThumbnail;
         const amount = item.saleInfo.listPrice?.amount;
+        const authors = item.volumeInfo.authors?.join(", ");
 
         if (thumbnail && amount) {
           return (
@@ -16,6 +17,7 @@ const Book = ({ book }) => {
                 <img src={thumbnail} alt="book" />
                 <div className="button">
                   <h3 className="title">{item.volumeInfo.title}</h3>
+                  <h4 className="authors">{authors}</h4>
                   <p className="amount">{amount}</p>
                 </div>
               </div>

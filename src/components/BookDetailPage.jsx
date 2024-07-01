@@ -32,9 +32,6 @@ const BookDetailPage = () => {
 
   return (
     <div className="book-detail-container">
-      <div className="book-detail-header">
-        <h1>Search for books</h1>
-      </div>
       <div className="book-detail-main">
         <div className="book-detail-image">
           <img src={thumbnail} alt={title} />
@@ -49,6 +46,9 @@ const BookDetailPage = () => {
               Price: {listPrice.amount} {listPrice.currencyCode}
             </p>
           )}
+          <button className="back-link" onClick={() => window.history.back()}>
+            Go back
+          </button>
         </div>
       </div>
     </div>
