@@ -1,7 +1,8 @@
 import { useState } from "react";
 import axios from "axios";
 
-const API_KEY = `AIzaSyCMVLJ9y0VCp8KatSP1UY9rNGoc3zuDVFQ&maxResults=40`;
+const RESULTS_SEARCH = "&maxResults=30";
+const API_KEY = "AIzaSyCMVLJ9y0VCp8KatSP1UY9rNGoc3zuDVFQ" + RESULTS_SEARCH;
 
 const useBookSearch = (search, category, sort) => {
   const [bookData, setBookData] = useState([]);

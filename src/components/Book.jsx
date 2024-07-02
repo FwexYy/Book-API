@@ -10,22 +10,18 @@ const Book = ({ book }) => {
         const amount = item.saleInfo.listPrice?.amount;
         const authors = item.volumeInfo.authors?.join(", ");
 
-        if (thumbnail && amount) {
-          return (
-            <Link to={`/book/${item.id}`} key={item.id}>
-              <div className="book">
-                <img src={thumbnail} alt="book" />
-                <div className="button">
-                  <h3 className="title">{item.volumeInfo.title}</h3>
-                  <h4 className="authors">{authors}</h4>
-                  <p className="amount">{amount}</p>
-                </div>
+        return (
+          <Link to={`/book/${item.id}`} key={item.id}>
+            <div className="book">
+              {thumbnail && <img src={thumbnail} alt="book" />}
+              <div className="button">
+                <h3 className="title">{item.volumeInfo.title}</h3>
+                <h4 className="authors">{authors}</h4>
+                {amount && <p className="amount">{amount}</p>}
               </div>
-            </Link>
-          );
-        }
-
-        return null;
+            </div>
+          </Link>
+        );
       })}
     </>
   );
