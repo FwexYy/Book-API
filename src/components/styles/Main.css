@@ -47,7 +47,7 @@
 }
 
 .search input:focus {
-  border-color: #5c9ead; /* Изменение цвета рамки при фокусе */
+  border-color: #5c9ead;
 }
 
 .search button {
@@ -58,7 +58,7 @@
   padding: 0 0.5rem;
 }
 .btn-search:hover {
-  background-color: #4c8c9e; /* Изменение цвета кнопки при наведении */
+  background-color: #4c8c9e;
 }
 
 .filters {
