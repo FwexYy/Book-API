@@ -16,12 +16,16 @@ const Main = () => {
 
   const handleKeyPress = (evt) => {
     if (evt.key === "Enter") {
-      searchBook();
+      searchBook(true);
     }
   };
 
   const handleSearchClick = () => {
-    searchBook();
+    searchBook(true);
+  };
+
+  const handleLoadMoreClick = () => {
+    searchBook(false);
   };
 
   return (
@@ -47,7 +51,7 @@ const Main = () => {
               value={category}
               onChange={(e) => {
                 setCategory(e.target.value);
-                searchBook();
+                searchBook(true);
               }}
             >
               <option value="all">All</option>
@@ -64,7 +68,7 @@ const Main = () => {
               value={sort}
               onChange={(e) => {
                 setSort(e.target.value);
-                searchBook();
+                searchBook(true);
               }}
             >
               <option value="relevance">Relevance</option>
@@ -78,6 +82,11 @@ const Main = () => {
         {loading && <p>Loading...</p>}
         {error && <p>{error}</p>}
         <Book book={bookData} />
+        {bookData.length > 0 && !loading && (
+          <button className="btn-load-more" onClick={handleLoadMoreClick}>
+            Load more
+          </button>
+        )}
       </div>
     </>
   );

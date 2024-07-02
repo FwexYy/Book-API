@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import "./styles/BookDetailPage.css";
+import secondPage from "./image/secondPage.jpg";
 
 const BookDetailPage = () => {
   const { id } = useParams();
@@ -22,7 +23,7 @@ const BookDetailPage = () => {
     volumeInfo: { title, authors, description, imageLinks, categories },
     saleInfo: { listPrice },
   } = bookItem;
-  const thumbnail = imageLinks?.thumbnail;
+  const thumbnail = imageLinks?.thumbnail || secondPage;
   const authorNames = authors?.join(", ");
 
   const shortDescription =
