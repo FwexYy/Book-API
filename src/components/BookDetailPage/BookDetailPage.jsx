@@ -1,17 +1,17 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import axios from "axios";
-import "./styles/BookDetailPage.css";
-import secondPage from "./image/secondPage.jpg";
+import "./BookDetailPage.css";
+import secondPage from "../image/secondPage.jpg";
+import { shortenDescription } from "../Utils/utils";
+import { fetchBookById } from "../Api/api";
 
 const BookDetailPage = () => {
   const { id } = useParams();
   const [bookItem, setBookItem] = useState(null);
 
   useEffect(() => {
-    axios
-      .get(`https://www.googleapis.com/books/v1/volumes/${id}`)
-      .then((res) => setBookItem(res.data))
+    fetchBookById(id)
+      .then((data) => setBookItem(data))
       .catch((err) => console.log(err));
   }, [id]);
 
@@ -26,10 +26,7 @@ const BookDetailPage = () => {
   const thumbnail = imageLinks?.thumbnail || secondPage;
   const authorNames = authors?.join(", ");
 
-  const shortDescription =
-    description?.length > 500
-      ? `${description.substring(0, 500)}...`
-      : description;
+  const shortDescription = shortenDescription(description);
 
   return (
     <div className="book-detail-container">
@@ -41,7 +38,9 @@ const BookDetailPage = () => {
           <h2>{title}</h2>
           <h3>{authorNames}</h3>
           <p>{categories?.join(" / ")}</p>
-          <div dangerouslySetInnerHTML={{ __html: shortDescription }}></div>
+          <div className="book-description">
+            <p>{shortDescription}</p>
+          </div>
           {listPrice && (
             <p>
               Price: {listPrice.amount} {listPrice.currencyCode}

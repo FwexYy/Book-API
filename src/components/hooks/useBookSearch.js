@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import { CATEGORIES } from "../Constants/constants";
 
 const RESULTS_SEARCH = "&maxResults=30";
 const API_KEY = "AIzaSyCMVLJ9y0VCp8KatSP1UY9rNGoc3zuDVFQ" + RESULTS_SEARCH;
@@ -16,7 +17,8 @@ const useBookSearch = (search, category, sort) => {
     setLoading(true);
     setError(null);
 
-    const categoryQuery = category !== "all" ? `+subject:${category}` : "";
+    const categoryQuery =
+      category !== CATEGORIES.ALL ? `+subject:${category}` : "";
     const currentStartIndex = newSearch ? 0 : startIndex;
 
     axios

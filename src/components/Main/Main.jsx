@@ -1,13 +1,14 @@
 import { useState } from "react";
-import useBookSearch from "./hooks/useBookSearch";
-import Book from "./Book";
-import "./styles/Main.css";
-import "./styles/common.css";
+import useBookSearch from "../hooks/useBookSearch";
+import Book from "../Book/Book";
+import "./Main.css";
+import "../styles/common.css";
+import { CATEGORIES, SORT_OPTIONS } from "../Constants/constants";
 
 const Main = () => {
   const [search, setSearch] = useState("");
-  const [category, setCategory] = useState("all");
-  const [sort, setSort] = useState("relevance");
+  const [category, setCategory] = useState(CATEGORIES.ALL);
+  const [sort, setSort] = useState(SORT_OPTIONS.RELEVANCE);
   const { bookData, searchBook, loading, error } = useBookSearch(
     search,
     category,
@@ -26,6 +27,14 @@ const Main = () => {
 
   const handleLoadMoreClick = () => {
     searchBook(false);
+  };
+
+  const handleCategoryChange = (e) => {
+    setCategory(e.target.value);
+  };
+
+  const handleSortChange = (e) => {
+    setSort(e.target.value);
   };
 
   return (
@@ -49,30 +58,21 @@ const Main = () => {
             <select
               id="category"
               value={category}
-              onChange={(e) => {
-                setCategory(e.target.value);
-                searchBook(true);
-              }}
+              onChange={handleCategoryChange}
             >
-              <option value="all">All</option>
-              <option value="art">Art</option>
-              <option value="biography">Biography</option>
-              <option value="computers">Computers</option>
-              <option value="history">History</option>
-              <option value="medical">Medical</option>
-              <option value="poetry">Poetry</option>
+              {Object.keys(CATEGORIES).map((key) => (
+                <option key={key} value={CATEGORIES[key]}>
+                  {key.charAt(0) + key.slice(1).toLowerCase()}{" "}
+                </option>
+              ))}
             </select>
             <label className="sort">Sort by: </label>
-            <select
-              id="sort"
-              value={sort}
-              onChange={(e) => {
-                setSort(e.target.value);
-                searchBook(true);
-              }}
-            >
-              <option value="relevance">Relevance</option>
-              <option value="newest">Newest</option>
+            <select id="sort" value={sort} onChange={handleSortChange}>
+              {Object.keys(SORT_OPTIONS).map((key) => (
+                <option key={key} value={SORT_OPTIONS[key]}>
+                  {key.charAt(0) + key.slice(1).toLowerCase()}{" "}
+                </option>
+              ))}
             </select>
           </div>
         </div>
@@ -81,7 +81,7 @@ const Main = () => {
       <div className="container">
         {loading && <p>Loading...</p>}
         {error && <p>{error}</p>}
-        <Book book={bookData} />
+        <Book books={bookData} />
         {bookData.length > 0 && !loading && (
           <button className="btn-load-more" onClick={handleLoadMoreClick}>
             Load more
