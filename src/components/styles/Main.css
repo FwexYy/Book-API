@@ -34,6 +34,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: 20px;
 }
 
 .search input {
@@ -57,6 +58,7 @@
   height: 38px;
   padding: 0 0.5rem;
 }
+
 .btn-search:hover {
   background-color: #4c8c9e;
 }
@@ -66,6 +68,7 @@
   display: flex;
   gap: 10px;
   align-items: center;
+  justify-content: center;
 }
 
 .filters label {
@@ -110,33 +113,97 @@
   border-color: #5c9ead;
 }
 
-.btn-load-more {
-  background-color: #5c9ead;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  font-size: 16px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  margin-top: 20px;
-  align-self: center;
-}
-
 .btn-load-more:hover {
   background-color: #4a7a8d;
 }
 
+.container-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .container {
   position: relative;
-  padding-bottom: 90px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-top: 25px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 15px;
+  box-sizing: border-box;
+  margin-bottom: 150px;
+  padding: 0 10px;
+}
+
+.book {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  color: #000;
+  height: 360px;
+  max-width: 250px;
+  margin: 0; /* Удален margin */
+}
+
+.book:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.book img {
+  width: 80%;
+  height: 70%;
+  margin-top: 10px;
+}
+
+.title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 200px;
+  margin: 5px;
+}
+
+@media (max-width: 1200px) {
+  .container {
+    grid-template-columns: repeat(3, 1fr);
+    width: 80%;
+  }
+}
+
+@media (max-width: 900px) {
+  .container {
+    grid-template-columns: repeat(2, 1fr);
+    width: 65%;
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .book {
+    height: auto;
+    max-width: 100%;
+  }
+
+  .book img {
+    width: 100%;
+    height: auto;
+  }
 }
 
 .btn-load-more {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  bottom: 0px;
+  bottom: -80px;
   background-color: #5c9ead;
   color: #fff;
   border: none;
